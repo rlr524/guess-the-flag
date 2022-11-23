@@ -4,6 +4,7 @@ excluded:
 
 disabled_rules:
   - colon
+  - trailing_whitespace
 
 opt_in_rules:
   - force_unwrapping
