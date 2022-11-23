@@ -85,25 +85,24 @@ struct ContentView: View {
     }
     
     func flagTapped(_ number: Int) {
-        if questionNumber <= 8 {
             if number == correctAnswer {
                 scoreTitle = "Correct"
                 score += 1
-                questionNumber += 1
             } else {
                 scoreTitle = "Incorrect. That is the flag of \(countries[number])"
-                score -= 1
-                questionNumber += 1
             }
-        } else {
-            gameOver = true
-        }
         showingScore = true
     }
     
     func askQuestion() {
-        countries.shuffle()
-        correctAnswer = Int.random(in: 0...2)
+        if questionNumber < 7 {
+            countries.shuffle()
+            correctAnswer = Int.random(in: 0...2)
+            questionNumber += 1
+            print(questionNumber)
+        } else {
+            gameOver = true
+        }
     }
     
     func reset() {
